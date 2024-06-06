@@ -5,14 +5,28 @@ int n, t;
 int A[100000000];
 
 int linear_search(int A[], int n, int t) {
-    // write you code
-
+    for (int i=0; i < n-1; i++){
+        if (A[i] == t) {return 1;}
+    }
     return 0; // not found
 }
 
 int binary_search(int A[], int n, int t) {
-    // write your code
-    
+    int left = 0;
+    int right = n-1;
+    int m;
+    while (left <= right) {
+        m = (int) ((right - left) / 2 + left);
+
+        if (t == A[m]){
+            return 1;
+        }
+        else if (t < A[m]){
+            right = m-1;
+        } else {
+            left = m+1;
+        }
+    }
     return 0; // not found
 }
 
