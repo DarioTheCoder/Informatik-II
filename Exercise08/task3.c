@@ -66,6 +66,16 @@ void printTree(struct TreeNode* root){ // print the edges in the correct format
 // task 3
 
 int are_identical(struct TreeNode* root1, struct TreeNode* root2){
+    if (root1 == NULL && root2 == NULL){
+        return True;
+    }
+    if (root1 == NULL || root2 == NULL){
+        return False;
+    }
+    if (root1->val == root2->val){
+        return (are_identical(root1->left, root2->left) && are_identical(root1->right, root2->right));
+    }
+    return 0;
 
 }
 

@@ -4,16 +4,38 @@
 
 #define N 150
 
+
 /* Implement */
 int insertKeyH1(int *HT, int k) {
-    /* TODO task 2.(a) */
-    return 0;
+    int index = k % 7;
+    int counter = 0;
+
+    while (counter < N && HT[index] != -1){
+        index = (index + 1) % N;
+        counter++;
+    }
+    if (counter >= N){
+        return 0;
+    }
+    HT[index] = k;
+    return counter;
 }
 
 /* Implement */
 int insertKeyH2(int *HT, int k) {
-    /* TODO task 2.(b) */
-    return 0;
+    int index = k % 143;
+    int step = (21*k) % 53;
+    int counter = 0;
+
+    while (counter < N && HT[index] != -1){
+        index = (index + counter*step) % N;
+        counter++;
+    }
+    if (counter >= N){
+        return 0;
+    }
+    HT[index] = k;
+    return counter;
 }
 
 /* given */

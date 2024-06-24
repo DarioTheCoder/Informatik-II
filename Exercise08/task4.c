@@ -68,11 +68,24 @@ void printTree(struct TreeNode* root){ // print the edges in the correct format
 
 // returns the height of a tree (recursively)
 int height(struct TreeNode* root){
-
-}
+    if (root == NULL){
+        return 0;
+    }
+    return 1 + max(height(root->left), height(root->right));
+} 
 
 int diameter(struct TreeNode* root){
+    if (root == NULL){
+        return 0;
+    }
 
+    int leftheight = height(root->left);
+    int rightheight = height(root->right);
+
+    int leftdiameter = diameter(root->left);
+    int rightdiameter = diameter(root->right);
+
+    return max(leftheight + rightheight +1, max(leftdiameter,rightdiameter)); // +1 because height counts edges not nodes 
 }
 
 int main(){

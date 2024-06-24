@@ -107,7 +107,20 @@ void traverseTree(struct TreeNode* root){
 
 // task 2
 struct TreeNode* mirror_image(struct TreeNode* root){
-    
+    if (root == NULL){
+        return;
+    }
+    struct TreeNode* temp;
+
+    temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+
+    mirror_image(root->left);
+    mirror_image(root->right);
+
+    return root;
+
 } 
 
 
